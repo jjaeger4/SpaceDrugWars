@@ -1,0 +1,81 @@
+body {
+  background-color: #080f1f;
+  color: #FFFFFF;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.black {
+  color: black;
+  font-weight: bold;
+}
+
+.title {
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+span.version {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #CCCCCC;
+}
+
+/* Main Menu */
+#main-menu-container {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 31px;
+  padding: 1rem 3rem;
+}
+#main-menu .menu-item button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+#main-menu .menu-item a {
+  display: block;
+  position: relative;
+}
+#main-menu .menu-item a:hover::before {
+  position: absolute;
+    top: 2px;
+    left: -20px;
+    content: "";
+    animation: blink 1s infinite steps(1);
+    width: 2px;
+    height: 2px;
+    box-shadow: 2px 2px #FFFFFF,
+      4px 2px #FFFFFF,
+      2px 4px #FFFFFF,
+      4px 4px #FFFFFF,
+      6px 4px #FFFFFF,
+      8px 4px #FFFFFF,
+      2px 6px #FFFFFF,
+      4px 6px #FFFFFF,
+      6px 6px #FFFFFF,
+      8px 6px #FFFFFF,
+      10px 6px #FFFFFF,
+      2px 8px #FFFFFF,
+      4px 8px #FFFFFF,
+      6px 8px #FFFFFF,
+      8px 8px #FFFFFF,
+      10px 8px #FFFFFF,
+      12px 8px #FFFFFF,
+      2px 10px #FFFFFF,
+      4px 10px #FFFFFF,
+      6px 10px #FFFFFF,
+      8px 10px #FFFFFF,
+      10px 10px #FFFFFF,
+      2px 12px #FFFFFF,
+      4px 12px #FFFFFF,
+      6px 12px #FFFFFF,
+      8px 12px #FFFFFF,
+      2px 14px #FFFFFF,
+      4px 14px #FFFFFF;
+}

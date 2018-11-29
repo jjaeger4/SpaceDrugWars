@@ -1,0 +1,20 @@
+# ignore all files starting with .
+.*
+!.htaccess
+!.gitlab-ci.yml
+!.htaccess
+!.eslintrc.js
+!.babelrc
+!.vscode/
+
+# track this file .gitignore (i.e. do NOT ignore it)
+!.gitignore
+
+# track readme.md in the root (i.e. do NOT ignore it)
+!readme.md
+
+# ignore all files that start with ~
+~*
+
+node_modules/
+dist/
