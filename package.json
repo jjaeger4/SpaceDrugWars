@@ -1,13 +1,13 @@
 {
-  "name": "spacedrugwars",
+  "name": "spicewars",
   "version": "1.0.0",
-  "description": "I missed playing Drug Wars and wanted something to play on my mobile device too so...",
+  "description": "I missed playing a game similar to this and wanted something to play on my mobile device without creating a native app so I started this.",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "start": "./node_modules/.bin/webpack-dev-server --color --mode production"
   },
-  "author": "Jesse Jaeger <jjaeger4@gmail.com>",
+  "author": "Jesse Jaeger <jesse@jaeger.website>",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.0.0",

@@ -13,16 +13,11 @@ import Game from './components/game';
 
 @observer
 class App extends React.Component {
-  @autobind
-  doStuff() {
-    appStore.test = "asdf";
-  }
-
   render() {
     return (
       <Router>
         <div>
-          <h1 className="title">Space Drug Wars</h1>
+          <h1 className="title">Spice Wars</h1>
           <span className="version">v1.0.0</span>
           <Route exact path="/" component={NewGame} />
           <Route exact path="/game" component={Game} />

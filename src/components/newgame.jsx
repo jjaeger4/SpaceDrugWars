@@ -1,4 +1,3 @@
-
 import {observer} from 'mobx-react';
 import React from 'react';
 import appStore from '../appstore';
@@ -18,6 +17,12 @@ export default class NewGame extends React.Component {
           <ul id="main-menu">
             <li className="menu-item">
               <Link to="/game"><button>New Game</button></Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/custom"><button>New Custom Game</button></Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/leaders"><button>Leaderboards</button></Link>
             </li>
           </ul>
         </div>
