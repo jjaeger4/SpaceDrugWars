@@ -9,14 +9,27 @@ export default class FootMenu extends React.Component {
     super(props);
   }
 
+  travel() {
+    appStore.showTravel();
+  }
+
   render() {
+    console.log(`Location: ${appStore.location}`);
     return (
       <div>
-        <div id="bottomgameinfo">
-          <div>HP: {`${appStore.health} / ${appStore.healthMax}`}</div>
-          <div className="footleft"><button type="button" className="btn">Travel</button></div>
-          <div className="footright"><button type="button" className="btn">Equipment</button></div>
-        </div>
+        {(appStore.currentState !== 2 && appStore.currentState !== 3 && (appStore.day < appStore.lastday) &&
+          <div id="bottomgameinfo">
+            <div>HP: {`${appStore.health} / ${appStore.healthMax}`}</div>
+            <div className="footleft">
+              <button
+                type="button"
+                className="btn"
+                onClick={this.travel}
+              >Travel</button>
+            </div>
+            <div className="footright"><button type="button" className="btn">Equipment</button></div>
+          </div>
+        )}
       </div>
     );
   }

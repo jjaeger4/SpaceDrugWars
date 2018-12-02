@@ -59,6 +59,14 @@ span.version {
 }
 
 /* Main Menu */
+#gameinfo {
+  .btn.loans {
+    font-size: 9px;
+    position: relative;
+    top: -3px;
+    padding: 6px 11px;
+  }
+}
 #main-menu-container {
   max-width: 500px;
   margin: auto;
@@ -126,12 +134,36 @@ span.version {
       width: 25%;
       text-align: right;
     }
+    &.selectedLocation {
+      margin: 0 2px;
+      -webkit-animation: blinkselection 1s infinite steps(1);
+      animation: blinkselection 1s infinite steps(1);
+    }
   }
 }
 
 #buyselltable {
   p {
     padding-bottom: 12px;
+  }
+}
+
+/* Animations */
+@-webkit-keyframes blinkselection {
+  0%, 49% {
+    background-color: #313131;
+  }
+  50%, 100% {
+    background-color: #484848
+  }
+}
+
+@keyframes blinkselection {
+  0%, 49% {
+    background-color: #313131;
+  }
+  50%, 100% {
+    background-color: #484848
   }
 }
 

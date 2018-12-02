@@ -22,6 +22,7 @@ class AppStore {
   @observable lastday = 30;
   @observable loan = 50000;
   @observable location = 0;
+  @observable selectedLocation = -1;
 
   @observable spiceCargo = [
     { name: 'Paprika', count: 0 },
@@ -36,15 +37,15 @@ class AppStore {
   ]
 
   @observable spices = [
-    { name: 'Paprika', price: 174 },
-    { name: 'Cumin', price: 234 },
-    { name: 'Marjoram', price: 455 },
-    { name: 'Rosemary', price: 99 },
-    { name: 'Sage', price: 762 },
-    { name: 'Thyme', price: 344 },
-    { name: 'Turmeric', price: 879 },
-    { name: 'Vanilla Beans', price: 12100 },
-    { name: 'Saffron', price: 23200 },
+    { name: 'Paprika', price: 174, low: 8, high: 42 },
+    { name: 'Cumin', price: 234, low: 120, high: 340 },
+    { name: 'Marjoram', price: 455, low: 300, high: 700 },
+    { name: 'Rosemary', price: 99, low: 75, high: 135 },
+    { name: 'Sage', price: 762, low: 669, high: 1300 },
+    { name: 'Thyme', price: 344, low: 300, high: 530 },
+    { name: 'Turmeric', price: 879, low: 730, high: 1700 },
+    { name: 'Vanilla Beans', price: 12100, low: 10100, high: 17000 },
+    { name: 'Saffron', price: 23200, low: 15332, high: 28000 },
   ];
 
   @observable shop = {
@@ -58,14 +59,37 @@ class AppStore {
 
   @observable locations = [
     { name: 'Planet 1' },
-    { name: 'Planet 1' },
-    { name: 'Planet 1' },
+    { name: 'Planet 2' },
+    { name: 'Planet 3' },
   ];
+  /*
+  TODO Price Change are different per planet
+  [
+    { name: 'Paprika', low: 8, high: 42 },
+    { name: 'Cumin', low: 120, high: 340 },
+    { name: 'Marjoram', low: 300, high: 700 },
+    { name: 'Rosemary', low: 75, high: 135 },
+    { name: 'Sage', low: 669, high: 1300 },
+    { name: 'Thyme', low: 300, high: 530 },
+    { name: 'Turmeric', low: 730, high: 1700 },
+    { name: 'Vanilla Beans', low: 10100, high: 17000 },
+    { name: 'Saffron', low: 15332, high: 28000 },
+  ]
+  */
 
   @action.bound
   init() {
     // Starting credits equal to initial loan amount
     this.credits = this.loan;
+    this.doPriceChange();
+  }
+
+  @action.bound
+  loanInterest() {
+    // Loan interest
+    if (this.loan > 0) {
+      this.loan = Math.ceil(this.loan * 1.15);
+    }
   }
 
   @action.bound
@@ -75,8 +99,34 @@ class AppStore {
   }
 
   @action.bound
+  travel(lid) {
+    this.location = lid;
+    this.doPriceChange();
+    this.loanInterest();
+  }
+
+  @action.bound
   showTable() {
     this.currentState = 0;
+  }
+
+  @action.bound
+  showTravel() {
+    this.currentState = 2;
+  }
+
+  /* Price Change Formulas */
+  @action.bound
+  doPriceChange() {
+    let price = 0;
+    this.spices.forEach((spice) => {
+      price = this.randomPrice(spice.low, spice.high);
+      spice.price = price;
+    });
+  }
+
+  randomPrice(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 }
 

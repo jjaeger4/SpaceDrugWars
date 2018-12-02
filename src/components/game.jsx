@@ -4,6 +4,7 @@ import appStore from '../appstore';
 import MainMenu from './game/mainmenu';
 import SpiceTable from './game/spicetable';
 import BuySell from './game/buysell';
+import Travel from './game/travel';
 
 @observer
 export default class NewGame extends React.Component {
@@ -19,6 +20,7 @@ export default class NewGame extends React.Component {
     switch(appStore.currentState) {
       case 0: return <SpiceTable />
       case 1: return <BuySell />
+      case 2: return <Travel />
     }
   }
 
