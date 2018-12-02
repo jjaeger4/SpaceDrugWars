@@ -68,8 +68,7 @@ export default class BuySell extends React.Component {
 
   @autobind
   buy() {
-    let availableCargoSpace = appStore.cargoFree;
-    if (availableCargoSpace >= this.state.buyUnits) {
+    if (appStore.cargoFree >= this.state.buyUnits) {
       // Do the purchase
       appStore.spiceCargo[appStore.selectedSpice].count += parseInt(this.state.buyUnits);
       appStore.cargo += parseInt(this.state.buyUnits);
@@ -84,7 +83,18 @@ export default class BuySell extends React.Component {
 
   @autobind
   sell() {
-
+    // Do you have this many to even sell tho?
+    if (appStore.spiceCargo[appStore.selectedSpice].count >= this.state.sellUnits) {
+      // Do the sell
+      appStore.spiceCargo[appStore.selectedSpice].count -= parseInt(this.state.sellUnits);
+      appStore.cargo -= parseInt(this.state.sellUnits);
+      appStore.credits += (parseInt(this.state.spice.price) * parseInt(this.state.sellUnits));
+      appStore.cargoFree += parseInt(this.state.sellUnits);
+      // Update new max amounts
+      this.updateMaxAmounts();
+    } else {
+      console.log('You dont have enough units to sell that many');
+    }
   }
 
   render() {
